@@ -1,0 +1,31 @@
+{
+  "name": "nico",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "tsx watch --env-file=.env.development src/index.ts",
+    "build": "tsc",
+    "start": "node --env-file=.env.production dist/index.js",
+    "deploy:commands": "tsx --env-file=.env.development src/scripts/deploy-commands.ts",
+    "deploy:commands:prod": "tsx --env-file=.env.production src/scripts/deploy-commands.ts"
+  },
+  "keywords": [],
+  "author": "Sushant Ray",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.18.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "tsx": "^4.23.12"
+  }
+}
