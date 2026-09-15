@@ -213,7 +213,16 @@ importers:
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
+      he:
+        specifier: ^1.2.0
+        version: 1.2.0
+      ky:
+        specifier: ^2.1.0
+        version: 2.1.0
     devDependencies:
+      '@types/he':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@types/node':
         specifier: ^26.4.0
         version: 26.4.0
@@ -419,6 +428,9 @@ packages:
     resolution: {integrity: sha512-xzvBr1Q1c4lCe7i6sRnrofxeO1QTP/LKQ6A6qy0iB4x5yfiSfARMEQEghojzTNALDTcv8En04qYNIco9/K9eZQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
+  '@types/he@1.2.3':
+    resolution: {integrity: sha512-q67/qwlxblDzEDvzHhVkwc1gzVWxaNxeyHUBF4xElrvjL11O+Ytze+1fGpBHlr/H9myiBUaUXNnNPmBHxxfAcA==}
+
   '@types/node@26.4.0':
     resolution: {integrity: sha512-faiGnoIrLH/V8cibOMEAZ8pMw6oXqSukl29ra4mN8GdaB2ZewzeaLj+INpV5N+Z1eKWzY+IzaIZH2EIR6YZRNQ==}
 
@@ -452,6 +464,14 @@ packages:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+
+  he@1.2.0:
+    resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
+
+  ky@2.1.0:
+    resolution: {integrity: sha512-nIKwelw+7qVqKOlX4Eht6GXfEXlDHcdIjyLWV3s119kYt5s+70ayTnYS+0fRNmtgGRRAfqdeWQbh8YizqkS0ng==}
+    engines: {node: '>=22'}
 
   lodash.snakecase@4.1.1:
     resolution: {integrity: sha512-QZ1d4xoBHYUeuouhEq3lk3Uq7ldgyFXGBhg04+oRLnIz8o9T65Eh+8YdroUwn846zchkA9yDsDl5CVVaV2nqYw==}
@@ -630,6 +650,8 @@ snapshots:
 
   '@sapphire/snowflake@3.5.5': {}
 
+  '@types/he@1.2.3': {}
+
   '@types/node@26.4.0':
     dependencies:
       undici-types: 8.3.0
@@ -696,6 +718,10 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  he@1.2.0: {}
+
+  ky@2.1.0: {}
 
   lodash.snakecase@4.1.1: {}
 

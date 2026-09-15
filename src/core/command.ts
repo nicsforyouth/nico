@@ -1,12 +1,22 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import {
+  AutocompleteInteraction,
+  CacheType,
+  ChatInputCommandInteraction,
+  SlashCommandBuilder,
+} from "discord.js";
 import { Piece, PieceManagerHandler, PieceStore } from "./piece";
 import { Nico } from "./client";
 
 export abstract class Command extends Piece {
-  public abstract readonly data: SlashCommandBuilder;
+  public abstract data: SlashCommandBuilder;
   public abstract execute(
     interaction: ChatInputCommandInteraction,
   ): Promise<void> | void;
+  public autocomplete(
+    interaction: AutocompleteInteraction<CacheType>,
+  ): Promise<void> | void {
+    return;
+  }
 }
 
 export class CommandManager implements PieceManagerHandler<Command> {
@@ -17,13 +27,19 @@ export class CommandManager implements PieceManagerHandler<Command> {
 
   public initialize(): Promise<void> | void {
     this.client.on("interactionCreate", async (interaction) => {
-      if (!interaction.isChatInputCommand()) return;
+      if (interaction.isChatInputCommand()) {
+        const command = this.store.get(interaction.commandName);
+        if (!command) return;
 
-      const command = this.store.get(interaction.commandName);
+        await command.execute(interaction);
+      }
+      if (interaction.isAutocomplete()) {
+        const command = this.store.get(interaction.commandName);
+        if (!command) return;
 
-      if (!command) return;
-
-      await command.execute(interaction);
+        await command.autocomplete(interaction);
+      }
+      return;
     });
     console.log(`Initialized ${this.store.size} commands.`);
   }

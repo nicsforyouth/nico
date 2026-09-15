@@ -22,9 +22,12 @@
   "type": "module",
   "dependencies": {
     "discord.js": "^14.27.0",
-    "dotenv": "^17.4.2"
+    "dotenv": "^17.4.2",
+    "he": "^1.2.0",
+    "ky": "^2.1.0"
   },
   "devDependencies": {
+    "@types/he": "^1.2.3",
     "@types/node": "^26.4.0",
     "tsx": "^4.23.12"
   }

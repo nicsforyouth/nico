@@ -8,9 +8,9 @@ import { uptime } from "node:process";
 
 export default class PingCommand extends Command {
   public name: string = "ping";
-  public data: SlashCommandBuilder = new SlashCommandBuilder()
-    .setName("ping")
-    .setDescription("Check whether the bot is alive");
+  public data: SlashCommandBuilder = new SlashCommandBuilder().setDescription(
+    "Check whether the bot is alive",
+  );
 
   public async execute(
     interaction: ChatInputCommandInteraction,

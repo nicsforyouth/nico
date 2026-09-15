@@ -4,7 +4,7 @@ import { join } from "path";
 import { pathToFileURL } from "url";
 
 export abstract class Piece {
-  public abstract readonly name: string;
+  public abstract name: string;
 }
 
 export interface PieceManagerHandler<T extends Piece> {

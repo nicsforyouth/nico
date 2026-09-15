@@ -16,7 +16,10 @@ const client = new Nico();
 await client.pieces.loadType("commands", sourceDirectory);
 
 const commands = [...client.pieces.get("commands").store.values()].map(
-  (command) => command.data.toJSON(),
+  (command) => {
+    command.data.setName(command.name);
+    return command.data.toJSON();
+  },
 );
 
 const rest = new REST().setToken(env.discordBotToken!);
