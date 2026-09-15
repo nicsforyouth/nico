@@ -1,5 +1,5 @@
 import type { ClientEvents } from "discord.js";
-import { Piece, PieceManagerHandler, PieceStore } from "./piece";
+import { Piece, type PieceManagerHandler, PieceStore } from "./piece";
 import { Nico } from "./client";
 
 export abstract class Listener<T extends keyof ClientEvents> extends Piece {

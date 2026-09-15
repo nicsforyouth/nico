@@ -1,4 +1,4 @@
-import { PieceTypeMap } from "../lib/types/pieces";
+import type { PieceTypeMap } from "../lib/types/pieces";
 import { readdir } from "fs/promises";
 import { join } from "path";
 import { pathToFileURL } from "url";

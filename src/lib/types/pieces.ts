@@ -1,4 +1,4 @@
-import { ClientEvents } from "discord.js";
+import type { ClientEvents } from "discord.js";
 import type { Command } from "../../core/command";
 import type { Listener } from "../../core/listener";
 

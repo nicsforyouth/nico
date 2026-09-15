@@ -1,14 +1,15 @@
 import {
   AutocompleteInteraction,
-  CacheType,
+  type CacheType,
   ChatInputCommandInteraction,
   SlashCommandBuilder,
+  type SlashCommandOptionsOnlyBuilder,
 } from "discord.js";
-import { Piece, PieceManagerHandler, PieceStore } from "./piece";
+import { Piece, type PieceManagerHandler, PieceStore } from "./piece";
 import { Nico } from "./client";
 
 export abstract class Command extends Piece {
-  public abstract data: SlashCommandBuilder;
+  public abstract data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
   public abstract execute(
     interaction: ChatInputCommandInteraction,
   ): Promise<void> | void;

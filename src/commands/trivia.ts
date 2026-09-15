@@ -55,7 +55,7 @@ const optionsMap: Record<number, string> = {
 
 export default class Trivia extends Command {
   public name = "trivia";
-  public data: SlashCommandBuilder = new SlashCommandBuilder()
+  public data = new SlashCommandBuilder()
     .setDescription("Test your computer knowledge")
     .addStringOption((option) =>
       option
@@ -109,6 +109,8 @@ export default class Trivia extends Command {
 
     const trivia = resJSON.results[0];
 
+    if (!trivia) return;
+
     const optionsCount = trivia.incorrect_answers.length + 1; // +1 for correct answer
     const options = [];
     let correctOptionIndex = 3; /* Default 3 to balance out the chances of 1/N% never occuring
@@ -137,7 +139,7 @@ export default class Trivia extends Command {
       .map((_, i) => {
         return new ButtonBuilder()
           .setCustomId(`trivia:${i}:${correctOptionIndex}`)
-          .setLabel(optionsMap[i])
+          .setLabel(optionsMap[i] ?? "")
           .setStyle(ButtonStyle.Secondary);
       });
 

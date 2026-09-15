@@ -1,6 +1,6 @@
 import {
   AutocompleteInteraction,
-  CacheType,
+  type CacheType,
   ChatInputCommandInteraction,
   EmbedBuilder,
   SlashCommandBuilder,
@@ -85,12 +85,12 @@ export default class DefineCommand extends Command {
             doc.slug.toLowerCase() == normalizedTerm,
         ) ?? search.documents[0];
 
-      const url = `https://developer.mozilla.org${result.mdn_url}`;
-
       if (!result) {
         await interaction.editReply(`Couldn't find **${term}** on MDN.`);
         return;
       }
+
+      const url = `https://developer.mozilla.org${result.mdn_url}`;
 
       const highlights = result.highlight;
 
@@ -147,7 +147,7 @@ export default class DefineCommand extends Command {
       );
     }
   }
-  public async autocomplete(
+  public override async autocomplete(
     interaction: AutocompleteInteraction<CacheType>,
   ): Promise<void> {
     const focused = interaction.options.getFocused();

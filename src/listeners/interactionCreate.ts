@@ -1,9 +1,9 @@
 import {
   ButtonInteraction,
-  CacheType,
+  type CacheType,
   Colors,
   EmbedBuilder,
-  Interaction,
+  type Interaction,
 } from "discord.js";
 import { Listener } from "../core/listener";
 
@@ -24,6 +24,8 @@ const handleButtonInteraction = async (
 ) => {
   if (interaction.customId.startsWith("trivia:")) {
     const oldEmbed = interaction.message.embeds[0];
+
+    if (!oldEmbed) return;
 
     const [_, optionIndex, correctIndex] = interaction.customId.split(":");
 

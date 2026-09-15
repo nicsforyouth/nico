@@ -28,14 +28,6 @@ export default class PingCommand extends Command {
           .setTitle("🏓 Pong!")
           .setColor("#0da79d")
           .setThumbnail(interaction.client.user.avatarURL())
-          // .setDescription(
-          //   [
-          //     `**Bot Latency:** ${botLatency}ms`,
-          //     `**API Latency:** ${apiLatency}ms`,
-          //     `⏱️ **Uptime** \`${formatUptime(process.uptime())}\``,
-          //     "",
-          //   ].join("\n"),
-          // )
           .setFields([
             {
               name: "Bot Latency",
