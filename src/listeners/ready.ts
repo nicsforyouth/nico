@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import { Listener } from "../core/listener";
+import { Listener } from "../core/listener.js";
 
 export default class ReadyListener extends Listener<"clientReady"> {
   public event: "clientReady" = "clientReady";

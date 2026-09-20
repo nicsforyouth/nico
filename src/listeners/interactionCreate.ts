@@ -5,7 +5,7 @@ import {
   EmbedBuilder,
   type Interaction,
 } from "discord.js";
-import { Listener } from "../core/listener";
+import { Listener } from "../core/listener.js";
 
 export default class InteractionCreate extends Listener<"interactionCreate"> {
   public name: string = "interactionCreate";

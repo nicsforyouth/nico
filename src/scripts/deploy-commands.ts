@@ -3,8 +3,8 @@ import "dotenv/config";
 import { REST, Routes } from "discord.js";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { Nico } from "../core/client";
-import { env } from "../config/env";
+import { Nico } from "../core/client.js";
+import { env } from "../config/env.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

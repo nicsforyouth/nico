@@ -1,9 +1,9 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 import { join } from "path";
-import { env } from "../config/env";
-import { PieceManager } from "./piece";
-import { CommandManager } from "./command";
-import { ListenerManager } from "./listener";
+import { env } from "../config/env.js";
+import { PieceManager } from "./piece.js";
+import { CommandManager } from "./command.js";
+import { ListenerManager } from "./listener.js";
 
 export class Nico<Ready extends boolean = boolean> extends Client<Ready> {
   public readonly pieces: PieceManager;
@@ -27,8 +27,8 @@ export class Nico<Ready extends boolean = boolean> extends Client<Ready> {
     this.pieces.register("commands", commands);
   }
 
-  public async init(): Promise<void> {
-    this.pieces.load(join(import.meta.dirname, ".."));
+  public async init(baseDirectory: string): Promise<void> {
+    this.pieces.load(baseDirectory);
     await this.login(env.discordBotToken);
   }
 }

@@ -5,7 +5,7 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
-import { Command } from "../core/command";
+import { Command } from "../core/command.js";
 import ky from "ky";
 import he from "he";
 

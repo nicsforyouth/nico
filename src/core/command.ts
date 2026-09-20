@@ -5,8 +5,8 @@ import {
   SlashCommandBuilder,
   type SlashCommandOptionsOnlyBuilder,
 } from "discord.js";
-import { Piece, type PieceManagerHandler, PieceStore } from "./piece";
-import { Nico } from "./client";
+import { Piece, type PieceManagerHandler, PieceStore } from "./piece.js";
+import type { Nico } from "./client.js";
 
 export abstract class Command extends Piece {
   public abstract data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;

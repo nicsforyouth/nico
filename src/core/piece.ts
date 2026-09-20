@@ -1,4 +1,4 @@
-import type { PieceTypeMap } from "../lib/types/pieces";
+import type { PieceTypeMap } from "../lib/types/pieces.js";
 import { readdir } from "fs/promises";
 import { join } from "path";
 import { pathToFileURL } from "url";
@@ -206,13 +206,8 @@ export class PieceLoader {
         continue;
       }
 
-      if (!entry.name.endsWith(".ts")) {
-        continue;
-      }
-
-      if (entry.name.endsWith(".d.ts")) {
-        continue;
-      }
+      if (!entry.name.endsWith(".js") && !entry.name.endsWith(".ts")) continue;
+      if (entry.name.endsWith(".d.ts")) continue;
 
       files.push(path);
     }
