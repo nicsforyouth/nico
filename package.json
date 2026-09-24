@@ -24,10 +24,12 @@
   "dependencies": {
     "discord.js": "^14.27.0",
     "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "he": "^1.2.0",
     "ky": "^2.1.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/he": "^1.2.3",
     "@types/node": "^26.4.0",
     "esbuild": "^0.28.2",
