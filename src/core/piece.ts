@@ -5,6 +5,7 @@ import { pathToFileURL } from "url";
 
 export abstract class Piece {
   public abstract name: string;
+  public onLoad?(file: string): void;
 }
 
 export interface PieceManagerHandler<T extends Piece> {
@@ -15,14 +16,6 @@ export interface PieceManagerHandler<T extends Piece> {
 
 export class PieceManager {
   public readonly loader = new PieceLoader();
-  // public readonly registry = new PieceRegistry();
-  // public readonly listeners = this.registry.registerType("listeners");
-  // public readonly commands = this.registry.registerType("commands");
-  // public readonly listenerManager: ListenerManager;
-
-  // public constructor(client: Client) {
-  //   this.listenerManager = new ListenerManager(client);
-  // }
 
   public async loadType<K extends keyof PieceTypeMap>(
     type: K,
@@ -110,8 +103,13 @@ export class PieceStore<T extends Piece> {
   public values() {
     return this.pieces.values();
   }
+
   public get size() {
     return this.pieces.size;
+  }
+
+  public [Symbol.iterator](): IterableIterator<T> {
+    return this.pieces.values();
   }
 }
 
@@ -160,6 +158,7 @@ export class PieceLoader {
     const start = performance.now();
 
     const files = await this.getFiles(directory);
+
     const loaded: PieceLoadResult<T>[] = [];
 
     for (const file of files) {
@@ -176,6 +175,7 @@ export class PieceLoader {
       }
 
       const piece = new PieceClass();
+      piece.onLoad?.(file);
 
       try {
         store.register(piece);

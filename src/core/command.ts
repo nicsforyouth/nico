@@ -9,14 +9,26 @@ import { Piece, type PieceManagerHandler, PieceStore } from "./piece.js";
 import type { Nico } from "./client.js";
 
 export abstract class Command extends Piece {
+  public category: string | null = null;
+  public abstract usage: string;
+
   public abstract data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
+
   public abstract execute(
     interaction: ChatInputCommandInteraction,
+    client: Nico,
   ): Promise<void> | void;
+
   public autocomplete(
     interaction: AutocompleteInteraction<CacheType>,
+    client: Nico,
   ): Promise<void> | void {
     return;
+  }
+
+  public override onLoad(file: string): void {
+    const cat = file.split("/").at(-2) ?? null;
+    this.category = cat !== "commands" ? cat : null;
   }
 }
 
@@ -32,13 +44,13 @@ export class CommandManager implements PieceManagerHandler<Command> {
         const command = this.store.get(interaction.commandName);
         if (!command) return;
 
-        await command.execute(interaction);
+        await command.execute(interaction, this.client);
       }
       if (interaction.isAutocomplete()) {
         const command = this.store.get(interaction.commandName);
         if (!command) return;
 
-        await command.autocomplete(interaction);
+        await command.autocomplete(interaction, this.client);
       }
       return;
     });

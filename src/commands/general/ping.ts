@@ -3,8 +3,9 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
-import { Command } from "../core/command.js";
+import { Command } from "../../core/command.js";
 import { uptime } from "node:process";
+import { config } from "../../lib/config.js";
 
 export default class PingCommand extends Command {
   public name: string = "ping";
@@ -26,7 +27,8 @@ export default class PingCommand extends Command {
       embeds: [
         new EmbedBuilder()
           .setTitle("🏓 Pong!")
-          .setColor("#0da79d")
+
+          .setColor(config.accentColor)
           .setThumbnail(interaction.client.user.avatarURL())
           .setFields([
             {

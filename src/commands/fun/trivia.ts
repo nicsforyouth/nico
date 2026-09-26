@@ -6,7 +6,7 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
-import { Command } from "../core/command.js";
+import { Command } from "../../core/command.js";
 import ky from "ky";
 import he from "he";
 
@@ -55,6 +55,8 @@ const optionsMap: Record<number, string> = {
 
 export default class Trivia extends Command {
   public name = "trivia";
+  public override usage: string =
+    "/trivia [difficulty=Easy,Medium,Hard] [type=True/False,Multiple Choice]";
   public data = new SlashCommandBuilder()
     .setDescription("Test your computer knowledge")
     .addStringOption((option) =>
